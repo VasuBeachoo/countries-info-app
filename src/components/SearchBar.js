@@ -7,7 +7,12 @@ export const SearchBarInput = styled.input.attrs({
 
 export const SearchBarIcon = styled.img``;
 
-export const SearchBarBox = styled.div``;
+export const SearchBarBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
 
 const SearchBar = ({ className }) => {
   return (

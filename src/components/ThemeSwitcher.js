@@ -4,7 +4,12 @@ export const ThemeLabel = styled.h3``;
 
 export const ThemeIcon = styled.img``;
 
-export const ThemeSwitcherBox = styled.div``;
+export const ThemeSwitcherBox = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+`;
 
 const ThemeSwitcher = ({ className }) => {
   return (
