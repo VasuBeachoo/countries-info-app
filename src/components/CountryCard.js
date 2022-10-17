@@ -19,13 +19,23 @@ export const CountryCardBox = styled.div`
   align-items: stretch;
 `;
 
-const CountryCard = ({ className, name, population, region, capital }) => {
+const CountryCard = ({
+  className,
+  flag,
+  name,
+  population,
+  region,
+  capital,
+}) => {
   return (
     <CountryCardBox className={className}>
-      <CountryFlag />
+      <CountryFlag src={flag} alt={`${name} flag`} />
       <CountrySummaryBox>
         <CountryName>{name}</CountryName>
-        <CountryInfoItem label="Population" value={population} />
+        <CountryInfoItem
+          label="Population"
+          value={population.toLocaleString()}
+        />
         <CountryInfoItem label="Region" value={region} />
         <CountryInfoItem label="Capital" value={capital} />
       </CountrySummaryBox>

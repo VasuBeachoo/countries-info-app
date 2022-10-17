@@ -29,7 +29,11 @@ const RegionFilter = ({ className }) => {
   const filterOptions = ["Africa", "America", "Asia", "Europe", "Oceania"];
 
   const displayFilterOptions = (filterOptions) => {
-    return filterOptions.map((option) => <FilterOption>{option}</FilterOption>);
+    let key = 1000;
+
+    return filterOptions.map((option) => (
+      <FilterOption key={key++}>{option}</FilterOption>
+    ));
   };
 
   return (

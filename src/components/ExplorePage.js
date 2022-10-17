@@ -19,11 +19,20 @@ export const ExplorePageBox = styled.div`
   align-items: stretch;
 `;
 
-const ExplorePage = ({ className }) => {
-  const countries = [];
-
+const ExplorePage = ({ className, countries }) => {
   const displayCountries = (countries) => {
-    return countries.map((country) => <CountryCard />);
+    let key = 2000;
+
+    return countries.map((country) => (
+      <CountryCard
+        key={key++}
+        flag={country.flags.svg}
+        name={country.name}
+        population={country.population}
+        region={country.region}
+        capital={country.capital}
+      />
+    ));
   };
 
   return (
