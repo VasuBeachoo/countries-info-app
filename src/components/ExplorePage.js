@@ -1,11 +1,17 @@
 import styled from "styled-components";
 import RegionFilter from "./RegionFilter";
 import SearchBar from "./SearchBar";
-import CountryCard from "./CountryCard";
+import CountryCard, { CountryCardBox } from "./CountryCard";
 
 export const ExploreCountriesBox = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+  grid-template-columns: repeat(auto-fit, 1fr);
+  justify-items: center;
+  gap: 3rem;
+
+  ${CountryCardBox} {
+    width: 100%;
+  }
 `;
 
 export const ExploreFilterBox = styled.div`
@@ -13,6 +19,11 @@ export const ExploreFilterBox = styled.div`
   flex-direction: row;
   justify-content: space-between;
   align-items: flex-start;
+  gap: 2rem;
+
+  @media (max-width: 600px) {
+    flex-direction: column;
+  }
 `;
 
 export const ExplorePageBox = styled.div`
@@ -20,6 +31,8 @@ export const ExplorePageBox = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
+  gap: 2.5rem;
+  padding: 2.5rem clamp(1.75rem, 5vw, 5rem);
 `;
 
 const ExplorePage = ({ className, countries }) => {

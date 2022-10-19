@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const ThemeLabel = styled.h3`
   color: ${(props) => props.theme.text};
+  font-weight: 600;
+  margin: 0;
 `;
 
 export const ThemeIcon = styled.img``;
