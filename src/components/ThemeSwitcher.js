@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const ThemeLabel = styled.h3``;
+export const ThemeLabel = styled.h3`
+  color: ${(props) => props.theme.text};
+`;
 
 export const ThemeIcon = styled.img``;
 

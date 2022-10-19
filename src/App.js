@@ -1,8 +1,8 @@
-import styled from "styled-components";
+import styled, { ThemeProvider } from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import Header from "./components/Header";
 import ExplorePage from "./components/ExplorePage";
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 
 const AppBox = styled.div`
   display: flex;
@@ -11,6 +11,7 @@ const AppBox = styled.div`
   align-items: stretch;
   min-width: 100vw;
   min-height: 100vh;
+  background-color: ${(props) => props.theme.bg};
 `;
 
 const App = () => {
@@ -24,12 +25,29 @@ const App = () => {
       });
   }, []);
 
+  const themes = {
+    light: {
+      bg: "var(--Light-Mode-Bg)",
+      elements: "var(--Light-Mode-Elements)",
+      text: "var(--Light-Mode-Text)",
+      input: "var(--Light-Mode-Input)",
+    },
+    dark: {
+      bg: "var(--Dark-Mode-Bg)",
+      elements: "var(--Dark-Mode-Elements)",
+      text: "var(--Dark-Mode-Text)",
+      input: "var(--Dark-Mode-Input)",
+    },
+  };
+
   return (
-    <AppBox>
-      <GlobalStyle />
-      <Header />
-      <ExplorePage countries={countries} />
-    </AppBox>
+    <ThemeProvider theme={themes.dark}>
+      <AppBox>
+        <GlobalStyle />
+        <Header />
+        <ExplorePage countries={countries} />
+      </AppBox>
+    </ThemeProvider>
   );
 };
 

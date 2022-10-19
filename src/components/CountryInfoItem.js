@@ -2,7 +2,9 @@ import styled from "styled-components";
 
 export const CountryInfoLabel = styled.span``;
 
-export const CountryInfoItemText = styled.p``;
+export const CountryInfoItemText = styled.p`
+  color: ${(props) => props.theme.text};
+`;
 
 const CountryInfoItem = ({ className, label, value }) => {
   return (

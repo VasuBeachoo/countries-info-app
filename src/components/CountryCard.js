@@ -1,7 +1,9 @@
 import styled from "styled-components";
 import CountryInfoItem from "./CountryInfoItem";
 
-export const CountryName = styled.h2``;
+export const CountryName = styled.h2`
+  color: ${(props) => props.theme.text};
+`;
 
 export const CountrySummaryBox = styled.div`
   display: flex;
@@ -10,13 +12,16 @@ export const CountrySummaryBox = styled.div`
   align-items: flex-start;
 `;
 
-export const CountryFlag = styled.img``;
+export const CountryFlag = styled.img`
+  width: 100%;
+`;
 
 export const CountryCardBox = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: stretch;
+  background-color: ${(props) => props.theme.elements};
 `;
 
 const CountryCard = ({

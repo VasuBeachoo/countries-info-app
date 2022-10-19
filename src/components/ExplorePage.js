@@ -3,7 +3,10 @@ import RegionFilter from "./RegionFilter";
 import SearchBar from "./SearchBar";
 import CountryCard from "./CountryCard";
 
-export const ExploreCountriesBox = styled.div``;
+export const ExploreCountriesBox = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(20rem, 1fr));
+`;
 
 export const ExploreFilterBox = styled.div`
   display: flex;

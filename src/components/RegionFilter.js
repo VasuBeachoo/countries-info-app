@@ -5,17 +5,21 @@ export const FilterListBox = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: flex-start;
+  background-color: ${(props) => props.theme.elements};
 `;
 
 export const FilterIcon = styled.img``;
 
-export const FilterOption = styled.p``;
+export const FilterOption = styled.p`
+  color: ${(props) => props.theme.text};
+`;
 
 export const ActiveFilterBox = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
+  background-color: ${(props) => props.theme.elements};
 `;
 
 export const RegionFilterBox = styled.div`
