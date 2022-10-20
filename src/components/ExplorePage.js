@@ -4,9 +4,11 @@ import SearchBar from "./SearchBar";
 import CountryCard, { CountryCardBox } from "./CountryCard";
 
 export const ExploreCountriesBox = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fit, 1fr);
-  justify-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 3rem;
 
   ${CountryCardBox} {

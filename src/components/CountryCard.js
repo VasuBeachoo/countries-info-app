@@ -33,6 +33,7 @@ export const CountryCardBox = styled.div`
   max-width: 25rem;
   background-color: ${(props) => props.theme.elements};
   border-radius: 0.75rem;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
 `;
 
 const CountryCard = ({
