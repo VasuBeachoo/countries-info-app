@@ -17,6 +17,8 @@ export const HeaderBox = styled.div`
   gap: 0.925rem;
   user-select: none;
   background-color: ${(props) => props.theme.elements};
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
   padding: 1.75rem clamp(1.75rem, 5vw, 5rem);
 
   @media (max-width: 600px) {
