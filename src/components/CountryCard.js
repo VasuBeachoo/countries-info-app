@@ -31,6 +31,7 @@ export const CountryCardBox = styled.div`
   justify-content: flex-start;
   align-items: stretch;
   max-width: 25rem;
+  user-select: none;
   background-color: ${(props) => props.theme.elements};
   border-radius: 0.75rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,

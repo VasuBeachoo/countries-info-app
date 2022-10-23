@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styled from "styled-components";
 import RegionFilter from "./RegionFilter";
 import SearchBar from "./SearchBar";
@@ -20,7 +21,7 @@ export const ExploreFilterBox = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: stretch;
   gap: 2rem;
 
   @media (max-width: 600px) {
@@ -39,6 +40,8 @@ export const ExplorePageBox = styled.div`
 `;
 
 const ExplorePage = ({ className, countries }) => {
+  const [activeFilter, setActiveFilter] = useState("No Filter");
+
   const displayCountries = (countries) => {
     let key = 2000;
 
@@ -58,7 +61,10 @@ const ExplorePage = ({ className, countries }) => {
     <ExplorePageBox className={className}>
       <ExploreFilterBox>
         <SearchBar />
-        <RegionFilter />
+        <RegionFilter
+          activeFilter={activeFilter}
+          setActiveFilter={setActiveFilter}
+        />
       </ExploreFilterBox>
       <ExploreCountriesBox>{displayCountries(countries)}</ExploreCountriesBox>
     </ExplorePageBox>
