@@ -3,6 +3,7 @@ import styled, { ThemeProvider } from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import Header from "./components/Header";
 import ExplorePage from "./components/ExplorePage";
+import CountryPage from "./components/CountryPage";
 
 const AppBox = styled.div`
   display: flex;
@@ -46,7 +47,8 @@ const App = () => {
       <AppBox>
         <GlobalStyle />
         <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-        <ExplorePage countries={countries} />
+        {/* <ExplorePage countries={countries} /> */}
+        <CountryPage info={countries[20]} />
       </AppBox>
     </ThemeProvider>
   );
