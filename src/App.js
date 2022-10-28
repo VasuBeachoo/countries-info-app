@@ -53,7 +53,7 @@ const App = () => {
             <Route path="/" element={<ExplorePage countries={countries} />} />
             {countries.map((country) => (
               <Route
-                path={`/${country.name}`}
+                path={`/${encodeURIComponent(country.name)}`}
                 element={<CountryPage info={country} />}
               />
             ))}
