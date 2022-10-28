@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import Header from "./components/Header";
@@ -47,8 +48,17 @@ const App = () => {
       <AppBox>
         <GlobalStyle />
         <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-        {/* <ExplorePage countries={countries} /> */}
-        <CountryPage info={countries[20]} />
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<ExplorePage countries={countries} />} />
+            {countries.map((country) => (
+              <Route
+                path={`/${country.name}`}
+                element={<CountryPage info={country} />}
+              />
+            ))}
+          </Routes>
+        </BrowserRouter>
       </AppBox>
     </ThemeProvider>
   );
