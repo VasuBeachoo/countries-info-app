@@ -58,12 +58,14 @@ const CountryCard = ({
       <CountryFlag src={flag} alt={`${name} flag`} />
       <CountrySummaryBox>
         <CountryName>{name}</CountryName>
-        <CountryInfoItem
-          label="Population"
-          value={population.toLocaleString()}
-        />
-        <CountryInfoItem label="Region" value={region} />
-        <CountryInfoItem label="Capital" value={capital} />
+        {population && (
+          <CountryInfoItem
+            label="Population"
+            value={population.toLocaleString()}
+          />
+        )}
+        {region && <CountryInfoItem label="Region" value={region} />}
+        {capital && <CountryInfoItem label="Capital" value={capital} />}
       </CountrySummaryBox>
     </CountryCardBox>
   );

@@ -9,7 +9,7 @@ export const ExploreCountriesBox = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
-  align-items: center;
+  align-items: stretch;
   flex-wrap: wrap;
   gap: 3rem;
 
@@ -43,16 +43,21 @@ export const ExplorePageBox = styled.div`
 const ExplorePage = ({ className, countries }) => {
   const navigate = useNavigate();
 
+  const [searchInput, setSearchInput] = useState("");
   const [activeFilter, setActiveFilter] = useState("No Filter");
 
-  const handleCountryCardClick = (countryName) => {
-    navigate(`/${encodeURIComponent(countryName)}`);
+  const handleCountryCardClick = (countryCode) => {
+    navigate(`/${countryCode}`);
     window.scrollTo(0, 0);
   };
 
   const filterCountries = (countries, activeFilter) => {
-    if (activeFilter === "No Filter") return countries;
-    else return countries.filter((country) => country.region === activeFilter);
+    let resultCountries = countries;
+    if (activeFilter !== "No Filter")
+      resultCountries = resultCountries.filter(
+        (country) => country.region === activeFilter
+      );
+    return resultCountries;
   };
 
   const displayCountries = (countries) => {
@@ -66,7 +71,7 @@ const ExplorePage = ({ className, countries }) => {
         population={country.population}
         region={country.region}
         capital={country.capital}
-        onClick={() => handleCountryCardClick(country.name)}
+        onClick={() => handleCountryCardClick(country.alpha3Code)}
       />
     ));
   };
@@ -74,7 +79,10 @@ const ExplorePage = ({ className, countries }) => {
   return (
     <ExplorePageBox className={className}>
       <ExploreFilterBox>
-        <SearchBar />
+        <SearchBar
+          value={searchInput}
+          onChange={(e) => setSearchInput(e.target.value)}
+        />
         <RegionFilter
           activeFilter={activeFilter}
           setActiveFilter={setActiveFilter}

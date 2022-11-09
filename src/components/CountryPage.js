@@ -3,17 +3,40 @@ import styled from "styled-components";
 import CountryInfoItem from "./CountryInfoItem";
 import { HiArrowLongLeft } from "react-icons/hi2";
 
+export const BorderCountryBtn = styled.button`
+  all: unset;
+  text-align: center;
+  user-select: none;
+  background-color: ${(props) => props.theme.elements};
+  color: ${(props) => props.theme.text};
+  font-size: 0.95rem;
+  border-radius: 0.5rem;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
+    rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  padding: 0.75rem 2rem;
+  transition: 0.25s;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+    filter: brightness(1.5);
+  }
+`;
+
 export const BorderCountriesList = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
 `;
 
 export const BorderCountriesLabel = styled.h2`
   color: ${(props) => props.theme.text};
   font-size: 1.125rem;
   font-weight: 600;
+  line-height: 2.35ch;
   margin: 0;
 `;
 
@@ -23,6 +46,7 @@ export const BorderCountriesBox = styled.div`
   flex-direction: row;
   justify-content: flex-start;
   align-items: center;
+  gap: 1.5rem;
   margin-top: 1.75rem;
 `;
 
@@ -131,6 +155,8 @@ export const CountryPageBox = styled.div`
 
 const CountryPage = ({ className, info }) => {
   const navigate = useNavigate();
+  const countries = require("i18n-iso-countries");
+  countries.registerLocale(require("i18n-iso-countries/langs/en.json"));
 
   const displayListNames = (list) => {
     let listNames = [];
@@ -146,37 +172,67 @@ const CountryPage = ({ className, info }) => {
           <BackBtnLabel>Back</BackBtnLabel>
         </BackBtn>
         <CountryInfoBox>
-          <CountryFlag src={info.flags.svg} alt={`${info.name} flag`} />
+          {info.flags.svg && info.name && (
+            <CountryFlag src={info.flags.svg} alt={`${info.name} flag`} />
+          )}
           <InfoItemsBox>
-            <CountryName>{info.name}</CountryName>
+            {info.name && <CountryName>{info.name}</CountryName>}
             <MainInfoBox>
-              <CountryInfoItem label="Native Name" value={info.nativeName} />
-              <CountryInfoItem
-                label="Population"
-                value={info.population.toLocaleString()}
-              />
-              <CountryInfoItem label="Region" value={info.region} />
-              <CountryInfoItem label="Sub Region" value={info.subregion} />
-              <CountryInfoItem label="Capital" value={info.capital} />
+              {info.nativeName && (
+                <CountryInfoItem label="Native Name" value={info.nativeName} />
+              )}
+              {info.population && (
+                <CountryInfoItem
+                  label="Population"
+                  value={info.population.toLocaleString()}
+                />
+              )}
+              {info.region && (
+                <CountryInfoItem label="Region" value={info.region} />
+              )}
+              {info.subregion && (
+                <CountryInfoItem label="Sub Region" value={info.subregion} />
+              )}
+              {info.capital && (
+                <CountryInfoItem label="Capital" value={info.capital} />
+              )}
             </MainInfoBox>
             <ExtraInfoBox>
-              <CountryInfoItem
-                label="Top Level Domain"
-                value={info.topLevelDomain[0]}
-              />
-              <CountryInfoItem
-                label="Currencies"
-                value={displayListNames(info.currencies)}
-              />
-              <CountryInfoItem
-                label="Languages"
-                value={displayListNames(info.languages)}
-              />
+              {info.topLevelDomain && (
+                <CountryInfoItem
+                  label="Top Level Domain"
+                  value={info.topLevelDomain[0]}
+                />
+              )}
+              {info.currencies && (
+                <CountryInfoItem
+                  label="Currencies"
+                  value={displayListNames(info.currencies)}
+                />
+              )}
+              {info.languages && (
+                <CountryInfoItem
+                  label="Languages"
+                  value={displayListNames(info.languages)}
+                />
+              )}
             </ExtraInfoBox>
-            <BorderCountriesBox>
-              <BorderCountriesLabel>Border Countries:</BorderCountriesLabel>
-              <BorderCountriesList></BorderCountriesList>
-            </BorderCountriesBox>
+            {info.borders && (
+              <BorderCountriesBox>
+                <BorderCountriesLabel>Border Countries:</BorderCountriesLabel>
+                <BorderCountriesList>
+                  {info.borders.map((borderCountry) => (
+                    <BorderCountryBtn
+                      onClick={() => navigate(`/${borderCountry}`)}
+                    >
+                      {countries.getName(borderCountry, "en", {
+                        select: "alias",
+                      })}
+                    </BorderCountryBtn>
+                  ))}
+                </BorderCountriesList>
+              </BorderCountriesBox>
+            )}
           </InfoItemsBox>
         </CountryInfoBox>
       </CountryPageBox>

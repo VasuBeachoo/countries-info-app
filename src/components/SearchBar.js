@@ -38,11 +38,11 @@ export const SearchBarBox = styled.div`
   width: clamp(10rem, 100%, 25rem);
 `;
 
-const SearchBar = ({ className }) => {
+const SearchBar = ({ className, value, onChange }) => {
   return (
     <SearchBarBox className={className}>
       <SearchBarIcon />
-      <SearchBarInput />
+      <SearchBarInput value={value} onChange={onChange} />
     </SearchBarBox>
   );
 };
