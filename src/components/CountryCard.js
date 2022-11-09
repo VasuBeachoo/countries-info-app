@@ -36,6 +36,12 @@ export const CountryCardBox = styled.div`
   border-radius: 0.75rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px,
     rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+  transition: 0.25s;
+
+  &:hover {
+    cursor: pointer;
+    transform: scale(0.925);
+  }
 `;
 
 const CountryCard = ({
@@ -45,9 +51,10 @@ const CountryCard = ({
   population,
   region,
   capital,
+  onClick,
 }) => {
   return (
-    <CountryCardBox className={className}>
+    <CountryCardBox className={className} onClick={onClick}>
       <CountryFlag src={flag} alt={`${name} flag`} />
       <CountrySummaryBox>
         <CountryName>{name}</CountryName>

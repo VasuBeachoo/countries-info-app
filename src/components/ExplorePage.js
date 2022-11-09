@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import RegionFilter from "./RegionFilter";
 import SearchBar from "./SearchBar";
@@ -40,7 +41,14 @@ export const ExplorePageBox = styled.div`
 `;
 
 const ExplorePage = ({ className, countries }) => {
+  const navigate = useNavigate();
+
   const [activeFilter, setActiveFilter] = useState("No Filter");
+
+  const handleCountryCardClick = (countryName) => {
+    navigate(`/${encodeURIComponent(countryName)}`);
+    window.scrollTo(0, 0);
+  };
 
   const displayCountries = (countries) => {
     let key = 2000;
@@ -53,6 +61,7 @@ const ExplorePage = ({ className, countries }) => {
         population={country.population}
         region={country.region}
         capital={country.capital}
+        onClick={() => handleCountryCardClick(country.name)}
       />
     ));
   };

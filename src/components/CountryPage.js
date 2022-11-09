@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import CountryInfoItem from "./CountryInfoItem";
 import { HiArrowLongLeft } from "react-icons/hi2";
@@ -129,6 +130,8 @@ export const CountryPageBox = styled.div`
 `;
 
 const CountryPage = ({ className, info }) => {
+  const navigate = useNavigate();
+
   const displayListNames = (list) => {
     let listNames = [];
     list.map((listItem) => listNames.push(listItem.name));
@@ -138,7 +141,7 @@ const CountryPage = ({ className, info }) => {
   return (
     info && (
       <CountryPageBox className={className}>
-        <BackBtn>
+        <BackBtn onClick={() => navigate(-1)}>
           <BackBtnIcon />
           <BackBtnLabel>Back</BackBtnLabel>
         </BackBtn>
