@@ -50,10 +50,15 @@ const ExplorePage = ({ className, countries }) => {
     window.scrollTo(0, 0);
   };
 
+  const filterCountries = (countries, activeFilter) => {
+    if (activeFilter === "No Filter") return countries;
+    else return countries.filter((country) => country.region === activeFilter);
+  };
+
   const displayCountries = (countries) => {
     let key = 2000;
 
-    return countries.map((country) => (
+    return filterCountries(countries, activeFilter).map((country) => (
       <CountryCard
         key={key++}
         flag={country.flags.svg}

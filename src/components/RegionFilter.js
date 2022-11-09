@@ -73,7 +73,7 @@ const RegionFilter = ({ className, activeFilter, setActiveFilter }) => {
   const filterOptions = [
     "No Filter",
     "Africa",
-    "America",
+    "Americas",
     "Asia",
     "Europe",
     "Oceania",
