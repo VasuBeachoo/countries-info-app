@@ -52,18 +52,16 @@ const App = () => {
       <AppBox>
         <GlobalStyle />
         <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<ExplorePage countries={countries} />} />
-            {countries.map((country) => (
-              <Route
-                key={key++}
-                path={`/${encodeURIComponent(country.alpha3Code)}`}
-                element={<CountryPage info={country} />}
-              />
-            ))}
-          </Routes>
-        </BrowserRouter>
+        <Routes>
+          <Route path="/" element={<ExplorePage countries={countries} />} />
+          {countries.map((country) => (
+            <Route
+              key={key++}
+              path={`/${encodeURIComponent(country.alpha3Code)}`}
+              element={<CountryPage info={country} />}
+            />
+          ))}
+        </Routes>
       </AppBox>
     </ThemeProvider>
   );
