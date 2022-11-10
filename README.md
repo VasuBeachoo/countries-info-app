@@ -25,13 +25,13 @@ Users should be able to:
 
 ### Screenshots
 
-![](./screenshot-explore-dark.png)
+![](./public/screenshot-explore-dark.png)
 
-![](./screenshot-explore-light.png)
+![](./public/screenshot-explore-light.png)
 
-![](./screenshot-country-dark.png)
+![](./public/screenshot-country-dark.png)
 
-![](./screenshot-country-dark.png)
+![](./public/screenshot-country-dark.png)
 
 ### Links
 
