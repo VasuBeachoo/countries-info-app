@@ -21,7 +21,9 @@ const App = () => {
   const [countries, setCountries] = useState([]);
 
   useEffect(() => {
-    fetch("https://restcountries.com/v2/all")
+    fetch("https://restcountries.com/v2/all", {
+      cache: "no-cache",
+    })
       .then((res) => res.json())
       .then((data) => {
         setCountries(data);
