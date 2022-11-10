@@ -43,4 +43,4 @@ Users should be able to:
 - styled-components
 - Flexbox
 - CSS Grid
-- Rest Countries API
+- REST Countries API
