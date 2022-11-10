@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { Switch, Route } from "react-router-dom";
+import { Routes, Route } from "react-router-dom";
 import styled, { ThemeProvider } from "styled-components";
 import GlobalStyle from "./GlobalStyle";
 import Header from "./components/Header";
@@ -52,7 +52,7 @@ const App = () => {
       <AppBox>
         <GlobalStyle />
         <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-        <Switch>
+        <Routes>
           <Route path="/" element={<ExplorePage countries={countries} />} />
           {countries.map((country) => (
             <Route
@@ -61,7 +61,7 @@ const App = () => {
               element={<CountryPage info={country} />}
             />
           ))}
-        </Switch>
+        </Routes>
       </AppBox>
     </ThemeProvider>
   );
