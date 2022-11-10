@@ -31,7 +31,7 @@ Users should be able to:
 
 ![](./public/screenshot-country-dark.png)
 
-![](./public/screenshot-country-dark.png)
+![](./public/screenshot-country-light.png)
 
 ### Links
 
