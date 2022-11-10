@@ -17,6 +17,8 @@ const AppBox = styled.div`
 `;
 
 const App = () => {
+  const url = "https://vasubeachoo.github.io";
+
   const [darkMode, setDarkMode] = useState(true);
   const [countries, setCountries] = useState([]);
 
@@ -54,11 +56,14 @@ const App = () => {
         <Header darkMode={darkMode} setDarkMode={setDarkMode} />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<ExplorePage countries={countries} />} />
+            <Route
+              path={`${url}/`}
+              element={<ExplorePage countries={countries} />}
+            />
             {countries.map((country) => (
               <Route
                 key={key++}
-                path={`/${encodeURIComponent(country.alpha3Code)}`}
+                path={`${url}/${encodeURIComponent(country.alpha3Code)}`}
                 element={<CountryPage info={country} />}
               />
             ))}
