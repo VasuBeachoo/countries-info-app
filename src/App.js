@@ -17,7 +17,7 @@ const AppBox = styled.div`
 `;
 
 const App = () => {
-  const url = "https://vasubeachoo.github.io";
+  const url = "https://vasubeachoo.github.io/countries-info-app";
 
   const [darkMode, setDarkMode] = useState(true);
   const [countries, setCountries] = useState([]);
