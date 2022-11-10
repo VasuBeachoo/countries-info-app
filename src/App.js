@@ -43,6 +43,8 @@ const App = () => {
     },
   };
 
+  let key = 12000;
+
   return (
     <ThemeProvider theme={darkMode ? themes.dark : themes.light}>
       <AppBox>
@@ -53,6 +55,7 @@ const App = () => {
             <Route path="/" element={<ExplorePage countries={countries} />} />
             {countries.map((country) => (
               <Route
+                key={key++}
                 path={`/${encodeURIComponent(country.alpha3Code)}`}
                 element={<CountryPage info={country} />}
               />

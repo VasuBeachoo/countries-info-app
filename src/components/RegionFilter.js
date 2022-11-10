@@ -1,6 +1,6 @@
 import { useState } from "react";
 import styled, { css } from "styled-components";
-import { BsChevronDown } from "react-icons/bs";
+import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 
 export const mixinRegionBox = css`
   gap: 1rem;
@@ -35,13 +35,12 @@ export const FilterListBox = styled.div`
   }
 `;
 
-export const DropdownIcon = styled(BsChevronDown)`
+export const CloseMenuIcon = styled(BsChevronUp)`
   color: ${(props) => props.theme.text};
-  ${(props) =>
-    props.menuOpen &&
-    css`
-      transform: rotate(180deg);
-    `};
+`;
+
+export const OpenMenuIcon = styled(BsChevronDown)`
+  color: ${(props) => props.theme.text};
 `;
 
 export const ActiveFilterBox = styled.div`
@@ -102,7 +101,7 @@ const RegionFilter = ({ className, activeFilter, setActiveFilter }) => {
         <FilterOption>
           {activeFilter === "No Filter" ? "Filter by Region" : activeFilter}
         </FilterOption>
-        <DropdownIcon menuOpen={menuOpen} />
+        {menuOpen ? <CloseMenuIcon /> : <OpenMenuIcon />}
       </ActiveFilterBox>
       {menuOpen && (
         <FilterListBox>{displayFilterOptions(filterOptions)}</FilterListBox>

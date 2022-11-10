@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import CountryInfoItem from "./CountryInfoItem";
-import { HiArrowLongLeft } from "react-icons/hi2";
+import { HiOutlineArrowNarrowLeft } from "react-icons/hi";
 
 export const BorderCountryBtn = styled.button`
   all: unset;
@@ -118,9 +118,9 @@ export const BackBtnLabel = styled.p`
   margin: 0;
 `;
 
-export const BackBtnIcon = styled(HiArrowLongLeft)`
+export const BackBtnIcon = styled(HiOutlineArrowNarrowLeft)`
   color: ${(props) => props.theme.text};
-  font-size: 1.85rem;
+  font-size: 1.8rem;
 `;
 
 export const BackBtn = styled.div`
@@ -163,6 +163,22 @@ const CountryPage = ({ className, info }) => {
     list.map((listItem) => listNames.push(listItem.name));
     return listNames.join(", ");
   };
+
+  const displayBorderCountryName = (borderCountryCode) => {
+    const borderCountryName = countries.getName(borderCountryCode, "en", {
+      select: "alias",
+    });
+
+    if (borderCountryName !== undefined) return borderCountryName;
+    else return borderCountryCode;
+  };
+
+  const handleBorderCountryBtnClick = (borderCountryCode) => {
+    navigate(`/${borderCountryCode}`);
+    window.scrollTo(0, 0);
+  };
+
+  let key = 8000;
 
   return (
     info && (
@@ -221,13 +237,14 @@ const CountryPage = ({ className, info }) => {
               <BorderCountriesBox>
                 <BorderCountriesLabel>Border Countries:</BorderCountriesLabel>
                 <BorderCountriesList>
-                  {info.borders.map((borderCountry) => (
+                  {info.borders.map((borderCountryCode) => (
                     <BorderCountryBtn
-                      onClick={() => navigate(`/${borderCountry}`)}
+                      key={key++}
+                      onClick={() =>
+                        handleBorderCountryBtnClick(borderCountryCode)
+                      }
                     >
-                      {countries.getName(borderCountry, "en", {
-                        select: "alias",
-                      })}
+                      {displayBorderCountryName(borderCountryCode)}
                     </BorderCountryBtn>
                   ))}
                 </BorderCountriesList>

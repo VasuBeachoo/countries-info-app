@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { HiMagnifyingGlass } from "react-icons/hi2";
+import { BsSearch } from "react-icons/bs";
 
 export const SearchBarInput = styled.input.attrs({
   type: "text",
@@ -22,11 +22,11 @@ export const SearchBarInput = styled.input.attrs({
   }
 `;
 
-export const SearchBarIcon = styled(HiMagnifyingGlass)`
+export const SearchBarIcon = styled(BsSearch)`
   position: absolute;
-  left: 1.15rem;
+  left: 1.2rem;
   color: ${(props) => props.theme.text};
-  font-size: 1.4rem;
+  font-size: 1.2rem;
 `;
 
 export const SearchBarBox = styled.div`

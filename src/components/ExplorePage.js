@@ -51,29 +51,40 @@ const ExplorePage = ({ className, countries }) => {
     window.scrollTo(0, 0);
   };
 
-  const filterCountries = (countries, activeFilter) => {
+  const filterCountries = (countries, searchInput, activeFilter) => {
     let resultCountries = countries;
+
+    if (searchInput !== "")
+      resultCountries = resultCountries.filter(
+        (country) =>
+          country.name.substr(0, searchInput.length).toUpperCase() ===
+          searchInput.toUpperCase()
+      );
+
     if (activeFilter !== "No Filter")
       resultCountries = resultCountries.filter(
         (country) => country.region === activeFilter
       );
+
     return resultCountries;
   };
 
   const displayCountries = (countries) => {
     let key = 2000;
 
-    return filterCountries(countries, activeFilter).map((country) => (
-      <CountryCard
-        key={key++}
-        flag={country.flags.svg}
-        name={country.name}
-        population={country.population}
-        region={country.region}
-        capital={country.capital}
-        onClick={() => handleCountryCardClick(country.alpha3Code)}
-      />
-    ));
+    return filterCountries(countries, searchInput, activeFilter).map(
+      (country) => (
+        <CountryCard
+          key={key++}
+          flag={country.flags.svg}
+          name={country.name}
+          population={country.population}
+          region={country.region}
+          capital={country.capital}
+          onClick={() => handleCountryCardClick(country.alpha3Code)}
+        />
+      )
+    );
   };
 
   return (
